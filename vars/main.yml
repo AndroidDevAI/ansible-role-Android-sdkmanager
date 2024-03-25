@@ -15,3 +15,5 @@ download_dir: /opt/download
 android_home: "{{ ansible_env.HOME }}/android"
 
 extract_dir: "{{ android_home }}/cmdline-tools"
+
+add_paths: "{{ android_home }}/cmdline-tools/tools/bin:{{ android_home }}/emulator:{{ android_home }}/platform-tools"

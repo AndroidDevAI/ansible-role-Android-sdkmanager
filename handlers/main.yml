@@ -3,3 +3,6 @@
 
 - name: Move to tools
   command: "mv {{ extract_dir }}/cmdline-tools {{ extract_dir }}/tools"
+
+- name: Reset connection
+  meta: reset_connection
