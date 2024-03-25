@@ -1,0 +1,1 @@
+relation: https://github.com/AndroidDevAI/Android-sdkmanager.Knowledge/tree/main/Accept%20License
