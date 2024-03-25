@@ -31,4 +31,4 @@
   loop:
   - .bashrc
   - .profile
-  # - .bash_profile
+  - .bash_profile
