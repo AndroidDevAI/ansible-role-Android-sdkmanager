@@ -1,2 +1,17 @@
 ---
 # vars file for Android-sdkmanager
+
+version: 11076708
+
+download_url: "https://dl.google.com/android/repository/commandlinetools-linux-{{ version }}_latest.zip"
+
+file_name: "commandlinetools-linux-{{ version }}_latest.zip"
+
+checksum_sha256: "2d2d50857e4eb553af5a6dc3ad507a17adf43d115264b1afc116f95c92e5e258"
+
+# pre
+download_dir: /opt/download
+
+android_home: "{{ ansible_env.HOME }}/android"
+
+extract_dir: "{{ android_home }}/cmdline-tools"

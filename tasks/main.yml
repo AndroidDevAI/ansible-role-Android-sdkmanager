@@ -1,2 +1,6 @@
 ---
-# tasks file for Android-sdkmanager
+- name: java
+  include_tasks: "{{ ansible_os_family }}/{{ ansible_distribution }}/main.yml"
+
+- name: first
+  include_tasks: Command line tools.yml

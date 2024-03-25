@@ -1,2 +1,5 @@
 ---
 # handlers file for Android-sdkmanager
+
+- name: Move to tools
+  command: "mv {{ extract_dir }}/cmdline-tools {{ extract_dir }}/tools"

@@ -1,0 +1,33 @@
+---
+- name: pre
+  include_tasks: pre.yml
+
+- name: Download Command line tools only
+  ansible.builtin.get_url:
+    url: "{{ download_url }}"
+    dest: "{{ download_dir }}/{{ file_name }}"
+    checksum: "sha256:{{ checksum_sha256 }}"
+
+- name: Extract Android Tools
+  ansible.builtin.unarchive:
+    src: "{{ download_dir }}/{{ file_name }}"
+    dest: "{{ extract_dir }}"
+    remote_src: yes
+    creates: "{{ extract_dir }}/tools/source.properties"
+  notify: Move to tools
+
+
+- name: Add to PATH
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    block: |
+      # Android SDK
+      export ANDROID_HOME=$HOME/android
+      export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH
+      export PATH=$ANDROID_HOME/emulator/:$PATH
+      export PATH=$ANDROID_HOME/platform-tools/:$PATH
+    create: true
+  loop:
+  - .bashrc
+  - .profile
+  # - .bash_profile

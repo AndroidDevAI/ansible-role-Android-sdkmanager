@@ -1,0 +1,6 @@
+---
+- name: Install Java - OpenJDK
+  ansible.builtin.apt:
+    pkg:
+    - default-jdk
+  become: true
