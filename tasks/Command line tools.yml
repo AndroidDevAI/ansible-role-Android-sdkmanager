@@ -16,21 +16,21 @@
     creates: "{{ extract_dir }}/tools/source.properties"
   notify: Move to tools
 
-# - name: Add to local user PATH
-#   ansible.builtin.blockinfile:
-#     path: "{{ ansible_env.HOME }}/{{ item }}"
-#     marker: "# {mark} ANSIBLE MANAGED BLOCK Android cmdline-tools"
-#     block: |
-#       # Android SDK
-#       export ANDROID_HOME="$HOME/android"
-#       export PATH="$ANDROID_HOME/cmdline-tools/tools/bin:$PATH"
-#       export PATH="$ANDROID_HOME/emulator:$PATH"
-#       export PATH="$ANDROID_HOME/platform-tools:$PATH"
-#     create: true
-#   loop:
-#     - .bashrc
-#     - .profile
-#     - .bash_profile
+- name: Add to local user PATH
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK Android cmdline-tools"
+    block: |
+      # Android SDK
+      export ANDROID_HOME="$HOME/android"
+      export PATH="$ANDROID_HOME/cmdline-tools/tools/bin:$PATH"
+      export PATH="$ANDROID_HOME/emulator:$PATH"
+      export PATH="$ANDROID_HOME/platform-tools:$PATH"
+    create: true
+  loop:
+    - .bashrc
+    - .profile
+    - .bash_profile
 
 - name: Add to Global PATH in /etc/environment
   ansible.builtin.replace:
