@@ -16,6 +16,9 @@
     creates: "{{ extract_dir }}/tools/source.properties"
   notify: Move to tools
 
+- name: link to /usr/local/bin
+  include_tasks: link bin.yml
+
 - name: Add to local user PATH
   ansible.builtin.blockinfile:
     path: "{{ ansible_env.HOME }}/{{ item }}"
@@ -23,7 +26,7 @@
     block: |
       # Android SDK
       export ANDROID_HOME="$HOME/android"
-      export PATH="$ANDROID_HOME/cmdline-tools/tools/bin:$PATH"
+      # export PATH="$ANDROID_HOME/cmdline-tools/tools/bin:$PATH"
       export PATH="$ANDROID_HOME/emulator:$PATH"
       export PATH="$ANDROID_HOME/platform-tools:$PATH"
     create: true

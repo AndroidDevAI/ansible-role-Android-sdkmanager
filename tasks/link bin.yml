@@ -1,0 +1,19 @@
+---
+
+- name: link cmdline-tools to /usr/local/bin
+  ansible.builtin.file:
+    src: "{{ extract_dir }}/tools/bin/{{ item }}"
+    dest: "{{ bin_dir }}/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    state: link
+  become: true
+  loop:
+  - apkanalyzer
+  - lint
+  - resourceshrinker
+  - screenshot2
+  - avdmanager
+  - profgen
+  - retrace
+  - sdkmanager

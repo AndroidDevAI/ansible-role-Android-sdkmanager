@@ -18,3 +18,5 @@ android_home: "/opt/android"
 extract_dir: "{{ android_home }}/cmdline-tools"
 
 add_paths: "{{ android_home }}/cmdline-tools/tools/bin:{{ android_home }}/emulator:{{ android_home }}/platform-tools"
+
+bin_dir: "/usr/local/bin"
